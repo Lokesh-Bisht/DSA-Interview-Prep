@@ -14,8 +14,8 @@ struct Node {
     Node* next;
 
     Node(int data) {
-	    this->data = data;
-	    next = NULL;
+        this->data = data;
+        next = NULL;
     }
 };
 
