@@ -10,18 +10,18 @@
 #include <cstdio>
 
 struct Node {
-	int data;
-	Node* next;
+    int data;
+    Node* next;
 
-	Node(int data) {
-		this->data = data;
-		next = NULL;
-	}
+    Node(int data) {
+        this->data = data;
+        next = NULL;
+    }
 };
 
 void removeLoop(Node* head) {
     if (head == NULL) {
-      return;
+        return;
     }
     Node* slow = head;
     Node* fast = head;
@@ -29,12 +29,16 @@ void removeLoop(Node* head) {
         fast = fast->next->next;
         slow = slow->next;
         // loop found
-        if (slow == fast) break;
+        if (slow == fast) {
+            break;
+        }
     }
     // for full loop (from start of the list to the end)
     if (slow == head) {
-        while (slow->next != fast) slow = slow->next;
-            slow->next = NULL;
+        while (slow->next != fast) {
+            slow = slow->next;
+        }
+        slow->next = NULL;
     }
     else if (slow == fast) {
         slow = head;

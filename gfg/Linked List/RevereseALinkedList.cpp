@@ -10,18 +10,18 @@
 #include <cstdio>
 
 struct Node {
-	int data;
-	Node* next;
+    int data;
+    Node* next;
 
-	Node(int data) {
-		this->data = data;
-		next = NULL;
-	}
+    Node(int data) {
+        this->data = data;
+        next = NULL;
+    }
 };
 
 Node* reverseLinkedList(Node* head) {
     if (head == NULL) {
-      return;
+        return;
     }
     Node* prev = NULL;
     Node* cur = NULL;
