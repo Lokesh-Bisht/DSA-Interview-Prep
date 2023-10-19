@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2023 Lokesh Bisht
  * 
- * Problem Link: https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1?page=1&category[]=Linked%20List&sortBy=submissions
+ * Problem Link: https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1?page=1&category[]=Linked%20List&sortBy=submissions
  * 
  * TC => O(n)
  * SC => O(1)
