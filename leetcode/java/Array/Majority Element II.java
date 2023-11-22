@@ -13,16 +13,9 @@ import java.util.List;
 class Solution {
 
     public List<Integer> majorityElement(int[] nums) {
-        int count = 0, majorityElement = -1;
-        int count2 = 0, majorityElement2 = -1;
+        int count = 0, majorityElement = Integer.MIN_VALUE;
+        int count2 = 0, majorityElement2 = Integer.MIN_VALUE;
         int n = nums.length;
-        if (n < 3) {
-            HashSet<Integer> ans = new HashSet<>();
-            for (int i = 0; i < n; ++i) {
-                ans.add(nums[i]);
-            }
-            return new ArrayList<>(ans);
-        }
         for (int i = 0; i < n; ++i) {
             if (count == 0 && nums[i] != majorityElement2) {
                 count = 1;
@@ -39,7 +32,6 @@ class Solution {
                 count2--;
             }
         }
-        System.out.println(majorityElement + " " + majorityElement2);
         count = 0;
         count2 = 0;
         for (int i = 0; i < n; ++i) {
@@ -51,10 +43,10 @@ class Solution {
             }
         }
         List<Integer> ans = new ArrayList<>();
-        if (count > n / 3) {
+        if (count >= n / 3 + 1) {
             ans.add(majorityElement);
         }
-        if (count2 > n / 3 && majorityElement2 != ans.get(0)) {
+        if (count2 >= n / 3 + 1) {
             ans.add(majorityElement2);
         }
         return ans;
