@@ -35,6 +35,7 @@ public:
 };
 
 
+// Top down (Memoization) approach
 // TC => O(n * m)
 // SC => O(n * m)
 class Solution {
@@ -63,5 +64,33 @@ public:
         int m = word2.size();
         vector<vector<int>> dp(n + 1, vector<int> (m + 1, -1));
         return calculateMinDistance(word1, word2, n, m, dp);
+    }
+};
+
+// Bottom up (Tabulation) approach
+// TC => O(n * m)
+// SC => O(n * m)
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        int n = word1.size();
+        int m = word2.size();
+        vector<vector<int>> dp(n + 1, vector<int> (m + 1, 0));
+        for (int i = 0; i <= n; ++i) {
+            for (int j = 0; j <= m; ++j) {
+                if (i == 0) {
+                    // If the first string is empty. We've to remove all the characters of the second string
+                    dp[i][j] = j;
+                } else if (j == 0) {
+                    dp[i][j] = i;
+                } else if (word1[i - 1] == word2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    // insert, remove, replace
+                    dp[i][j] = 1 + min(dp[i][j - 1], min(dp[i - 1][j], dp[i - 1][j - 1]));
+                }
+            }
+        }
+        return dp[n][m];
     }
 };
